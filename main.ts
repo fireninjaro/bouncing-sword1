@@ -1,6 +1,10 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.moveSprite(Sword, 100, 100)
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    info.setScore(100)
+    info.changeLifeBy(-5)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.moveSprite(Sword, 100, 100)
 })
@@ -19,6 +23,24 @@ sprites.onOverlap(SpriteKind.Food, SpriteKind.Enemy, function (sprite, otherSpri
     )
 })
 info.onCountdownEnd(function () {
+    mySprite2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        f . . . . . . . . . . . . . f . 
+        . f . . . 2 2 2 2 2 2 2 . . . f 
+        . . f . 2 4 4 4 4 4 4 4 2 . f . 
+        . f . . 4 5 5 5 5 5 5 5 4 . . f 
+        f . . 2 4 4 5 5 5 5 5 4 4 2 f . 
+        . f . 2 2 2 4 4 4 4 4 2 2 2 . f 
+        . . e e e e 2 2 2 2 2 e e e e . 
+        `, SpriteKind.Player)
     game.gameOver(false)
 })
 info.onScore(100, function () {
@@ -166,6 +188,7 @@ info.onScore(100, function () {
     mySprite2.setPosition(75, 55)
     info.setLife(40)
     game.showLongText("Level two", DialogLayout.Center)
+    info.startCountdown(165)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.moveSprite(Sword, 100, 100)
@@ -201,7 +224,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
     animation.runMovementAnimation(
     Lightning,
-    animation.animationPresets(animation.bobbingRight),
+    animation.animationPresets(animation.flyToCenter),
     2000,
     false
     )
