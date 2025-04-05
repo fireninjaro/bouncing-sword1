@@ -187,7 +187,7 @@ info.onScore(100, function () {
         `, SpriteKind.Projectile)
     mySprite2.setPosition(75, 55)
     info.setLife(40)
-    game.showLongText("Level two", DialogLayout.Center)
+    game.showLongText("Level two: the rules are almost the same as level one except for in this round their is a log icon in the middle of the screen: do not overlap with this icon because if you do you will lose ten points.", DialogLayout.Center)
     info.startCountdown(165)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -233,6 +233,7 @@ let mySprite2: Sprite = null
 let Lightning: Sprite = null
 let Fireball: Sprite = null
 let Sword: Sprite = null
+game.showLongText("Level one: in order to succeed in the first level you must collect up to 100 points by hitting the cookie icon with your character (the sword icon) and also dodge the yellow characters so that you will not lose lives.", DialogLayout.Center)
 music.play(music.stringPlayable("C5 A F D C E G C ", 120), music.PlaybackMode.LoopingInBackground)
 let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
